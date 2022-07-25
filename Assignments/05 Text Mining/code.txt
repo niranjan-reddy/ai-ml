@@ -1,0 +1,23 @@
+path = "path where files are"
+os.chdir(path)
+df = pd.DataFrame() 
+lines = []
+filename = []
+stories = []
+i=0
+for file in os.listdir():
+    # Check whether file is in text format or not
+    if file.endswith(".txt"):
+        file_path = f"{path}\{file}"
+        fileName, fileExtension = os.path.splitext(file_path)
+        fn = fileName.split('path where files are')
+        filename.insert(i,fn[1])
+        with open(file_path, 'r') as f:
+            lines = f.readlines()
+            lines = [line.rstrip() for line in lines]
+        stories.insert(i,lines)
+        i=i+1
+print(len(filename))
+print(len(stories))
+df=pd.DataFrame({'fileName':filename,'Text': stories})
+print(df)
